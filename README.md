@@ -1,4 +1,4 @@
-# ddcorporation-next-simulator
+# arcadia-institute
 Aplicativo para a Arcadia Institute, para apresentar os produtos da empresa.
 - Tecnologia: Ionic v4
 - Desenvolvedor: Víctor Romário Paz de Jesus
