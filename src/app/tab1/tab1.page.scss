@@ -1,4 +1,41 @@
-.welcome-card img {
-  max-height: 35vh;
-  overflow: hidden;
+ion-content {
+  --background: white url('../../assets/bg.svg') no-repeat center center / cover;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #002c69;
+  border-color: #002c69;
+}
+.img-symbol {
+  width: 50%;
+  margin-bottom: 1.075rem;
+}
+.relative {
+  position: relative;
+}
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-58%);
+}
+.space-between {
+  margin-bottom: 0.625rem;
+}
+.title {
+  font-size: 30px;
+  color: #002c69;
+}
+.subtitle {
+  color: #002c69;
+  margin-bottom: 1.575rem;
+}
+.put-on-right {
+  text-align: right;
+}
+.put-on-left {
+  text-align: left;
+}
+.color-primary {
+  color: #002c69;
 }
