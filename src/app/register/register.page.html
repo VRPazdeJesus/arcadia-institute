@@ -1,9 +1,42 @@
 <ion-header>
-  <ion-toolbar>
+  <!-- <ion-toolbar>
     <ion-title>register</ion-title>
-  </ion-toolbar>
+  </ion-toolbar> -->
 </ion-header>
 
-<ion-content>
-
+<ion-content class="relative">
+  <div class="container vertical-center">
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-12">
+          <div class="ion-text-center">
+            <img class="img-symbol" src="../../assets/logo-arcadia-s.png" alt="simbolo Arcadia" />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-12">
+          <form [formGroup]="validations_form"  (ngSubmit)="tryRegister(validations_form.value)">
+            <div class="form-group ion-text-center">
+              <p class="subtitle">Por gentileza, informe:</p>
+              <input type="text" class="form-control space-between" formControlName="nome" placeholder="Nome completo" required>
+              <input type="email" class="form-control space-between" formControlName="email" placeholder="Email" required>
+              <input type="password" class="form-control space-between" formControlName="password" placeholder="Senha" required>
+              <input type="password" class="form-control space-between" formControlName="passwordAgain" placeholder="Repita a senha" required>
+              <input type="tel" class="form-control space-between" formControlName="telefone" placeholder="Telefone" required>
+              <input type="text" class="form-control space-between" formControlName="nascimento" placeholder="Data de nascimento" required>
+            </div>
+            <div class="custom-control custom-checkbox mr-sm-2 margin-selectbox">
+              <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
+              <label class="custom-control-label color-grey" for="customControlAutosizing">Concordo com os <b>termos de uso</b></label>
+            </div>
+            <button class="btn btn-primary btn-lg btn-block space-between" type="submit" >Criar conta</button>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-12">
+          <p class="color-primary space-between"><a (click)="goLoginPage()"><i class="fas fa-arrow-circle-left"></i> Voltar</a></p>
+        </div>
+      </div>
+  </div>
 </ion-content>
