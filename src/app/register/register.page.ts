@@ -66,6 +66,8 @@ export class RegisterPage implements OnInit {
   }
 
   tryRegister(value){
+    console.log(value);
+    
     this.authService.registerUser(value)
      .then(res => {
        console.log(res);

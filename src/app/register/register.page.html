@@ -17,7 +17,7 @@
         <div class="col-12 col-sm-12 col-md-12">
           <form [formGroup]="validations_form"  (ngSubmit)="tryRegister(validations_form.value)">
             <div class="form-group ion-text-center">
-              <p class="subtitle">Por gentileza, informe:</p>
+              <p class="subtitle">Preencha os campos:</p>
               <input type="text" class="form-control space-between" formControlName="nome" placeholder="Nome completo" required>
               <input type="email" class="form-control space-between" formControlName="email" placeholder="Email" required>
               <input type="password" class="form-control space-between" formControlName="password" placeholder="Senha" required>
