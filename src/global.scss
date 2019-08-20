@@ -24,3 +24,30 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+ion-alert {
+    --min-width: 90% !important;
+} 
+ion-alert h2 {
+    text-align: center;
+    color: #002c69 !important;
+}
+ion-alert div {
+    text-align: left !important;
+}
+ion-alert div .alert-button-group {
+    display: flex !important;
+    justify-content: center !important;
+    padding: 0 !important;
+}
+ion-alert button {
+    border-top: .55px solid rgba(var(--ion-text-color-rgb,0,0,0),.2) !important;
+    color: #002c69 !important;
+    font-weight: 700 !important;
+    margin: 0 !important;
+    width: 100%;
+    margin-top: 10px !important;
+}
+ion-alert button span {
+    display: flex !important;
+    justify-content: center !important;
+}
