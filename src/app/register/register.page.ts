@@ -92,8 +92,7 @@ export class RegisterPage implements OnInit {
 
     await alert.present();
   }
-
- 
+  
   goLoginPage(){
     this.navCtrl.navigateBack('');
   }

@@ -61,4 +61,8 @@ export class LoginPage implements OnInit {
     this.navCtrl.navigateForward('/register');
   }
 
+  goToForgotPage(){
+    this.navCtrl.navigateForward('/forgot');
+  }
+
 }

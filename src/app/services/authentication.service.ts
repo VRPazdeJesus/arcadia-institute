@@ -41,6 +41,15 @@ export class AuthenticationService {
        }
      })
    }
+
+   passwordToEmail(value) {
+    return new Promise<any>((resolve, reject) => {
+      firebase.auth().sendPasswordResetEmail(value.email)
+      .then(
+        res => resolve(res),
+        err => reject(err))
+    })
+   }
   
    userDetails(){
      return firebase.auth().currentUser;

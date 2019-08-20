@@ -10,7 +10,8 @@ const routes: Routes = [
   // Firebase
   { path: '', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'register', loadChildren: './register/register.module#RegisterPageModule' },
-  { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardPageModule' }
+  { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardPageModule' },
+  { path: 'forgot', loadChildren: './forgot/forgot.module#ForgotPageModule' }
 ];
 @NgModule({
   imports: [
