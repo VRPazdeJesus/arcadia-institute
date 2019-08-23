@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { AuthenticationService } from '../services/authentication.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -9,10 +10,12 @@ import { AuthenticationService } from '../services/authentication.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  public aEmail:string;
+  public aPassword:string;
   validations_form: FormGroup;
   errorMessage: string = '';
 
-  constructor(private navCtrl: NavController, private authService: AuthenticationService, private formBuilder: FormBuilder) {
+  constructor(private navCtrl: NavController, private authService: AuthenticationService, private formBuilder: FormBuilder, public toastController: ToastController) {
 
   }
 
@@ -53,7 +56,9 @@ export class LoginPage implements OnInit {
     }, err => {
       this.errorMessage = err.message;
       console.log('erro', this.errorMessage);
-      
+      this.informative();
+      this.aPassword = '';
+      this.aEmail = '';
     })
   }
  
@@ -63,6 +68,24 @@ export class LoginPage implements OnInit {
 
   goToForgotPage(){
     this.navCtrl.navigateForward('/forgot');
+  }
+
+  async informative() {
+    const toast = await this.toastController.create({
+      message: 'Email ou senha incorreta',
+      position: 'middle',
+      buttons: [
+        {
+          text: 'TENTAR NOVAMENTE',
+          role: 'cancel',
+          cssClass: 'porra',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    toast.present();
   }
 
 }

@@ -18,8 +18,8 @@
           <form [formGroup]="validations_form"  (ngSubmit)="loginUser(validations_form.value)">
             <div class="form-group ion-text-center">
               <p class="subtitle">Faça login para continuar.</p>
-              <input type="email" class="form-control space-between" formControlName="email" placeholder="Email">
-              <input type="password" class="form-control space-between" formControlName="password" placeholder="Senha" required>
+              <input [(ngModel)]="aEmail" type="email" class="form-control space-between" formControlName="email" placeholder="Email">
+              <input [(ngModel)]="aPassword" type="password" class="form-control space-between" formControlName="password" placeholder="Senha" required>
             </div>
             <button class="btn btn-primary btn-lg btn-block space-between" type="submit"  [disabled]="!validations_form.valid">Login</button>
           </form>
