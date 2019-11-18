@@ -1,17 +1,7 @@
-// import { Component, OnInit } from '@angular/core';
-
-// import { AuthenticationService } from '../services/authentication.service';
-// import { Media, MediaObject } from '@ionic-native/media/ngx';
-// import { Platform, LoadingController } from '@ionic/angular';
-// // Novo
-// import { NativeAudio } from '@ionic-native/native-audio/ngx';
-
 import { Howl } from 'howler';
 import { Component, ViewChild } from '@angular/core';
 import { IonRange } from '@ionic/angular';
 import * as firebase from 'firebase';
-// import { AuthenticationService } from '../services/authentication.service';
-import { environment } from '../../environments/environment';
 
 export interface Track {
   name: string;
@@ -46,20 +36,21 @@ export class AudioPage {
   @ViewChild('range', {static: false}) range: IonRange;
 
   constructor() {
-    //firebase.initializeApp(environment.firebase);
     this.getLinkAudios();
   }
 
   async getLinkAudios() {
     this.getAudio().then(res => {
       const link = res.items;
-      this.objetosImagens = link;
+      this.objetosImagens = link;      
     }).catch(function(error) {
                 
     }).finally(() => {
       this.objetosImagens.forEach(element => {
         element.getDownloadURL().then(res => 
-        this.passaToArray(res))
+        this.passaToArray(res, element.name));
+        console.log();
+        
       });
     });
   }
@@ -76,9 +67,12 @@ export class AudioPage {
     })
   }
 
-  async passaToArray(value:any){
+  async passaToArray(value:any, name:any){
+    name = name.replace(".mp3", " ");
+    let re = /\-/gi;
+    name = name.replace(re, " ");
     let obj = {
-      name: 'Teste',
+      name: name,
       path: value
     }
     this.playlist.push(obj);
@@ -147,46 +141,4 @@ export class AudioPage {
     }, 1000)
   }
   
-  // public links = new Map();
-  // public file: MediaObject;
-  // public value: string = '../../assets/bebe.mp3';
-
-  // constructor(private authService: AuthenticationService, private media: Media,private nativeAudio: NativeAudio) { 
-  //   this.nativeAudio.preloadSimple('uniqueId1', 'src/assets/bebe.mp3');
-  //   this.nativeAudio.play('uniqueId1', () => console.log('uniqueId1 is done playing'));
-  //   // this.getLinkAudio();
-  //   this.executeAudio();
-  // }
-
-  
-
-  // async getLinkAudio() {
-  //   // this.authService.getAudio(this.value).then(res => {
-  //   //   const link = res;
-  //   //   this.links.set(this.value, link);
-  //   //   console.log('contante', link);
-  //   // }).catch(function(error) {
-                
-  //   // }).finally(() => {
-  //   //   this.executeAudio();
-  //   // });
-  // }
-
-  // async executeAudio() {
-    
-  //   // console.log(this.links.get(this.value));
-  //   // let l = this.links.get(this.value);
-  //   // this.file = this.media.create(l);
-
-  //   // this.file = this.media.create(this.value);
-  //   // this.file.play();
-  //   // this.file.setVolume(0.8);
-  // }
-
-  // ngOnInit() {
-  // }
-
-  // // async playAudio() { 
-  // //   this.file.play();
-  // // }
 }

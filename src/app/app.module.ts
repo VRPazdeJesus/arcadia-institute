@@ -9,7 +9,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { Media } from '@ionic-native/media/ngx';
 
 // Firebase
 import { environment } from 'src/environments/environment';
@@ -19,9 +18,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import * as firebase from 'firebase';
 firebase.initializeApp(environment.firebase);
 
-//Native audio
-import { NativeAudio } from '@ionic-native/native-audio/ngx';
-
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -30,8 +26,6 @@ import { NativeAudio } from '@ionic-native/native-audio/ngx';
     StatusBar,
     SplashScreen,
     AuthenticationService,
-    Media,
-    NativeAudio,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
