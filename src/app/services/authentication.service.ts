@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase/app';
+// import { log } from 'util';
+// import { url } from 'inspector';
 
 @Injectable({
   providedIn: 'root'
@@ -53,5 +55,24 @@ export class AuthenticationService {
   
    userDetails(){
      return firebase.auth().currentUser;
+   }
+
+   getAudio(value){
+    console.log(value);
+    return new Promise<any>((resolve, reject) => {
+      let arquivo = firebase.storage().ref();
+      let caminho = arquivo.child('audios/'+value);
+      caminho.getDownloadURL().then(
+        // url => {
+        //   console.log(url);
+        // });
+        res => resolve(res),
+        err => reject(err))
+    })
+    // let caminho = firebase.storage().ref().child('audios/'+value);
+    // caminho.getDownloadURL().then(url => {
+    //   this.v = url;
+    //     console.log(url);
+    // });
    }
 }

@@ -10,7 +10,7 @@ export const environment = {
     authDomain: "app-arcadia-institute.firebaseapp.com",
     databaseURL: "https://app-arcadia-institute.firebaseio.com",
     projectId: "app-arcadia-institute",
-    storageBucket: "",
+    storageBucket: "app-arcadia-institute.appspot.com",
     messagingSenderId: "388938488383",
     appId: "1:388938488383:web:30e9ab048a45d2c1"
   }

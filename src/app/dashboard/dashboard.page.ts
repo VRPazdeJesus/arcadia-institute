@@ -33,4 +33,8 @@ export class DashboardPage implements OnInit {
     })
   }
 
+  goToAudio(){
+    this.navCtrl.navigateForward('/audio');
+  }
+
 }
