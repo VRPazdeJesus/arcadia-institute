@@ -1,6 +1,5 @@
 // import { Component, OnInit } from '@angular/core';
-// import * as firebase from 'firebase';
-// import { environment } from '../../environments/environment';
+
 // import { AuthenticationService } from '../services/authentication.service';
 // import { Media, MediaObject } from '@ionic-native/media/ngx';
 // import { Platform, LoadingController } from '@ionic/angular';
@@ -10,6 +9,9 @@
 import { Howl } from 'howler';
 import { Component, ViewChild } from '@angular/core';
 import { IonRange } from '@ionic/angular';
+import * as firebase from 'firebase';
+// import { AuthenticationService } from '../services/authentication.service';
+import { environment } from '../../environments/environment';
 
 export interface Track {
   name: string;
@@ -23,24 +25,64 @@ export interface Track {
   styleUrls: ['./audio.page.scss'],
 })
 export class AudioPage {
-  playlist: Track[] = [
-    {
-      name: 'Say my Name',
-      path: './assets/audio/bebe.mp3'
-    },
-    {
-      name: 'Break up with your girlfriend',
-      path: './assets/audio/ari.m4a'
-    }
-  ];
+  // playlist: Track[] = [
+  //   {
+  //     name: 'Say my Name',
+  //     path: './assets/audio/bebe.mp3'
+  //   },
+  //   {
+  //     name: 'Break up with your girlfriend',
+  //     path: './assets/audio/ari.m4a'
+  //   }
+  // ];
+  playlist: Track[] = [];
 
+  public storageRef;
+  public objetosImagens;
   activeTrack: Track = null;
   player: Howl = null;
   isPlaying = false;
   progress = 0;
   @ViewChild('range', {static: false}) range: IonRange;
 
-  constructor() {}
+  constructor() {
+    //firebase.initializeApp(environment.firebase);
+    this.getLinkAudios();
+  }
+
+  async getLinkAudios() {
+    this.getAudio().then(res => {
+      const link = res.items;
+      this.objetosImagens = link;
+    }).catch(function(error) {
+                
+    }).finally(() => {
+      this.objetosImagens.forEach(element => {
+        element.getDownloadURL().then(res => 
+        this.passaToArray(res))
+      });
+    });
+  }
+
+  getAudio(){
+    return new Promise<any>((resolve, reject) => {
+      let arquivo = firebase.storage().ref();
+      let caminho = arquivo.child('terapia').listAll();
+      console.log(caminho);
+      
+      caminho.then(
+        res => resolve(res),
+        err => reject(err))
+    })
+  }
+
+  async passaToArray(value:any){
+    let obj = {
+      name: 'Teste',
+      path: value
+    }
+    this.playlist.push(obj);
+  }
 
   start(track: Track) {
     if(this.player) {
