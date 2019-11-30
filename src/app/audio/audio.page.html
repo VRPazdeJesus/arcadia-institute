@@ -1,43 +1,73 @@
-<ion-header>
-  <!-- <ion-toolbar>
+<!-- <ion-header>
+  <ion-toolbar>
     <ion-title>audio</ion-title>
-  </ion-toolbar> -->
-</ion-header>
+  </ion-toolbar>
+</ion-header> -->
 
 <ion-content>
+  <div class="container header">
+    <div class="row">
+      <div class="col-8">
+        <ion-button no-padding fill="clear" (click)="next(true)" color="secondary">
+          <ion-icon slot="icon-only" name="md-arrow-back"></ion-icon>
+        </ion-button>
+      </div>
+      <div class="col-4">
+        <ion-img src="../../assets/simbolo.png"></ion-img>
+      </div>
+    </div>
+  </div>
+  
+  
   <!-- <button class="btn btn-primary btn-lg btn-block space-between" (click) ="play()">Play</button> -->
-  <ion-list>
-    <ion-item button *ngFor="let track of playlist" (click)="start(track)">
-      <ion-label [color] = "track == activeTrack ? 'success' : 'light'">
+    <!-- <ion-item lines="full" button *ngFor="let track of playlist" (click)="start(track)">
+      <ion-label class="ion-text-center" [color] = "track == activeTrack ? 'dark' : 'light'">
         {{track.name}}
       </ion-label>
-    </ion-item>
-  </ion-list>
+    </ion-item> -->
 
-  <ion-footer *ngIf="activeTrack">
+    
+
+  <!-- <div *ngIf="activeTrack"> -->
+  <div class="div-v-center" *ngFor="let track of playlist">
     <ion-toolbar>
       <ion-row>
         <ion-col size="12" class="ion-text-center">
+            <!-- <ion-button class="button-play" (click)="togglePlayer(false)" *ngIf="!isPlaying" color="primary">
+              <ion-icon slot="icon-only" name="play"></ion-icon>
+            </ion-button> -->
+            <ion-button class="button-play" (click)="start(track)" *ngIf="!isPlaying" color="primary">
+              <ion-icon slot="icon-only" name="play"></ion-icon>
+            </ion-button>
+            <ion-button class="button-play" (click)="togglePlayer(true)" *ngIf="isPlaying" color="primary">
+              <ion-icon slot="icon-only" name="pause"></ion-icon>
+            </ion-button>
+        </ion-col>
+          
+        <!-- <ion-col size="12" class="ion-text-center">
           {{ activeTrack.name }}
+        </ion-col> -->
+        <ion-col size="12" class="ion-text-center">
+          {{ playlist[0].name }}
         </ion-col>
         <ion-col size="12" class="ion-text-center">
           <ion-range #range [(ngModel)]="progress" max="100" (touchend)="seek()" (mouseup)="seek()"></ion-range>
         </ion-col>
         <ion-col size="12" class="ion-text-center">
-          <ion-button fill="clear" (click)="prev()" color="light">
+          <ion-button fill="clear" (click)="prev()" color="medium">
             <ion-icon slot="icon-only" name="skip-backward"></ion-icon>
           </ion-button>
-          <ion-button fill="clear" (click)="togglePlayer(false)" *ngIf="!isPlaying" color="light">
+          <!-- <ion-button fill="clear" (click)="togglePlayer(false)" *ngIf="!isPlaying" color="light">
             <ion-icon slot="icon-only" name="play"></ion-icon>
-          </ion-button>
-          <ion-button fill="clear" (click)="togglePlayer(true)" *ngIf="isPlaying" color="light">
+          </ion-button> -->
+          <!-- <ion-button fill="clear" (click)="togglePlayer(true)" *ngIf="isPlaying" color="light">
             <ion-icon slot="icon-only" name="pause"></ion-icon>
-          </ion-button>
-          <ion-button fill="clear" (click)="next(true)" color="light">
+          </ion-button> -->
+          <ion-button fill="clear" (click)="next(true)" color="medium">
             <ion-icon slot="icon-only" name="skip-forward"></ion-icon>
           </ion-button>
         </ion-col>
       </ion-row>
     </ion-toolbar>
-  </ion-footer>
+  </div>
 </ion-content>

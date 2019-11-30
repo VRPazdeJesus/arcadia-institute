@@ -82,7 +82,6 @@ export class AudioPage {
     if(this.player) {
       this.player.stop();
     }
-
     this.player = new Howl({
       src: [track.path],
       html5: true,
@@ -106,7 +105,6 @@ export class AudioPage {
     } else {
       this.player.play();
     }
-
   }
 
   next() {
