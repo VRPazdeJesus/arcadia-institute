@@ -1,17 +1,30 @@
 ion-content {
     --background: white url('../../assets/bg.svg') no-repeat center center / cover;
 }
+ion-toolbar {
+    --background: #ffffff00;
+}
 .header {
     margin-top: 5%;
 }
 .button-play {
-    --border-radius: 50% !important;
-    width: 130px;
-    height: 130px;
+    --border-radius: 0% !important;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
 }
 .div-v-center{
     height: 70%;
     align-items: center!important;
     align-content: center!important;
     display: flex!important;
+}
+.waves {
+    background: url(../../assets/waves.svg);
+    width: 290px; 
+    height: 290px;
+    align-items: center!important;
+    align-content: center!important;
+    display: flex!important;
+    margin: auto;
 }

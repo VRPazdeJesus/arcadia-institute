@@ -1,5 +1,5 @@
 import { Howl } from 'howler';
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { IonRange } from '@ionic/angular';
 import * as firebase from 'firebase';
 
@@ -138,5 +138,5 @@ export class AudioPage {
       this.updateProgress();
     }, 1000)
   }
-  
+
 }

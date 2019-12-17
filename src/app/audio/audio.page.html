@@ -33,15 +33,19 @@
     <ion-toolbar>
       <ion-row>
         <ion-col size="12" class="ion-text-center">
+          <div class="waves">
+              <ion-button class="button-play" (click)="start(track)" *ngIf="!isPlaying" color="primary">
+                  <ion-icon slot="icon-only" name="play"></ion-icon>
+                </ion-button>
+                <ion-button class="button-play" (click)="togglePlayer(true)" *ngIf="isPlaying" color="primary">
+                  <ion-icon slot="icon-only" name="pause"></ion-icon>
+                </ion-button>
+
+          </div>
             <!-- <ion-button class="button-play" (click)="togglePlayer(false)" *ngIf="!isPlaying" color="primary">
               <ion-icon slot="icon-only" name="play"></ion-icon>
             </ion-button> -->
-            <ion-button class="button-play" (click)="start(track)" *ngIf="!isPlaying" color="primary">
-              <ion-icon slot="icon-only" name="play"></ion-icon>
-            </ion-button>
-            <ion-button class="button-play" (click)="togglePlayer(true)" *ngIf="isPlaying" color="primary">
-              <ion-icon slot="icon-only" name="pause"></ion-icon>
-            </ion-button>
+            
         </ion-col>
           
         <!-- <ion-col size="12" class="ion-text-center">
@@ -59,8 +63,8 @@
           </ion-button>
           <!-- <ion-button fill="clear" (click)="togglePlayer(false)" *ngIf="!isPlaying" color="light">
             <ion-icon slot="icon-only" name="play"></ion-icon>
-          </ion-button> -->
-          <!-- <ion-button fill="clear" (click)="togglePlayer(true)" *ngIf="isPlaying" color="light">
+          </ion-button>
+          <ion-button fill="clear" (click)="togglePlayer(true)" *ngIf="isPlaying" color="light">
             <ion-icon slot="icon-only" name="pause"></ion-icon>
           </ion-button> -->
           <ion-button fill="clear" (click)="next(true)" color="medium">
