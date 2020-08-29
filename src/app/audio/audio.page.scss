@@ -28,3 +28,26 @@ ion-toolbar {
     display: flex!important;
     margin: auto;
 }
+.fixme {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1 !important;
+}
+ion-list {
+    --ion-item-background: transparent;
+}
+.fixmedown {
+    position: sticky !important;
+    bottom: 0 !important;
+    z-index: 1 !important;
+}
+.podcast-icon {
+    width: 15%;
+}
+.podcast-text {
+    text-transform: capitalize;
+    margin-left: 2%;
+}
+.list-audios {
+    padding-top: 2%;
+}

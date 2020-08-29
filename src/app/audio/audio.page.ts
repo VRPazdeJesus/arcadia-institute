@@ -2,12 +2,13 @@ import { Howl } from 'howler';
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { IonRange } from '@ionic/angular';
 import * as firebase from 'firebase';
+// import * as $ from 'jquery'
 
 export interface Track {
   name: string;
   path: string;
+  img: string;
 }
-
 
 @Component({
   selector: 'app-audio',
@@ -73,7 +74,8 @@ export class AudioPage {
     name = name.replace(re, " ");
     let obj = {
       name: name,
-      path: value
+      path: value,
+      img: '../../assets/images.png'
     }
     this.playlist.push(obj);
   }
